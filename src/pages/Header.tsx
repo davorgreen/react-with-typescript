@@ -5,12 +5,17 @@ import logo from '../images/logo.png';
 //icons
 import { IoMenu } from 'react-icons/io5';
 import { MdOutlineFileUpload } from 'react-icons/md';
-import { FaRegBell, FaRegUser, FaSearch } from 'react-icons/fa';
+import {
+	FaRegBell,
+	FaRegUser,
+	FaSearch,
+	FaRegArrowAltCircleLeft,
+} from 'react-icons/fa';
 import { CiMicrophoneOn } from 'react-icons/ci';
 import { useState } from 'react';
 
 const Header: React.FC = () => {
-	const [showSearch, setShowSearch] = useState<boolean>(false);
+	const [showSearch, setShowSearch] = useState<boolean>(true);
 	return (
 		<div className='flex justify-between gap-10 lg:gap-20 pt-2 mb-6 mx-4'>
 			<div
@@ -24,9 +29,16 @@ const Header: React.FC = () => {
 					<img src={logo} alt='logo' className='h-10' />
 				</a>
 			</div>
+			{showSearch && (
+				<Button
+					onClick={() => setShowSearch(false)}
+					className='p-3 rounded-[50%] hover:bg-secondary-hover'>
+					<FaRegArrowAltCircleLeft size={35} />
+				</Button>
+			)}
 			<form
-				className={`md:flex gap-4 flex-grow justify-center items-center ${
-					showSearch ? 'flex' : 'hidden'
+				className={` gap-4 flex-grow justify-center items-center ${
+					showSearch ? 'flex' : 'hidden md:flex'
 				}`}>
 				<div className='flex flex-grow max-w-[600px]'>
 					<input
